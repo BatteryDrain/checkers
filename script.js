@@ -51,7 +51,6 @@ board.addEventListener("click", (e) => {
                 e.target.style.backgroundColor = "rgb(30, 66, 67)"; 
             }
             SELECTED = "e.target.id";
-
         }
         else{
             for (i = 0; i < 65; i++) {
@@ -67,9 +66,4 @@ board.addEventListener("click", (e) => {
         }
     }
 });
-
-// cell0.style.backgroundColor = "blue";
-// cell = document.getElementById("cell" + 0);
-// cell.style.backgroundColor = "red";
-
 //bot starts here:
