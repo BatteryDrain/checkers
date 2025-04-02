@@ -1,14 +1,16 @@
 IMGS = ["assets/red coin.webp", "assets/black coin.webp", "assets/null.png"];
 INDEX = 0;
+SELECTED = "";
+FIGURES = [];
 function BuildBord(){
     COLOR = "white";
     for (let row = 0; row < 8; row++) {
         for (let col = 0; col < 8; col++) {
             fig = document.createElement("figure");
-            fig.classList.add(COLOR); //apply CSS classes
+            fig.classList.add(COLOR); //apply css classes
             fig.id = "cell " + INDEX; //apply id
             img = document.createElement("img");
-            if ((row + col) % 2 === 1) { // Only place pieces on dark squares
+            if ((row + col) % 2 === 1) {
                 if (row < 3) {
                     img.src = IMGS[0];
                 } 
@@ -21,18 +23,45 @@ function BuildBord(){
 
             INDEX++
             COLOR = (COLOR === "white") ? "black" : "white"; // Toggle color
+
+            if((row * col + 1) == 64){
+                setFigures();
+            }
         }
         COLOR = (COLOR === "white") ? "black" : "white";
     }
 }
 
+function setFigures(){
+    FIGURES = document.querySelectorAll("figure");
+    console.log(FIGURES);
+}
+
 BuildBord();
 
 board.addEventListener("click", (e) => {
-    if(e.target.id !== "container"){
+    if(e.target.id !== "board"){
         console.log(e.target.id);
-        fig = e.target.id;
-        e.target.style.backgroundColor = "red"; 
+        if(SELECTED == e.target.id){
+            if(e.target.classList.contains("white")){
+                e.target.style.backgroundColor = "white"; 
+            }
+            else{
+                e.target.style.backgroundColor = "rgb(30, 67, 38)"; 
+            }
+            SELECTED = "";
+
+        }
+        else{
+            for(i = 0; i < FIGURES.length;)
+            if(e.target.classList.contains("white")){
+                e.target.style.backgroundColor = "rgb(165, 199, 202)"; 
+            }
+            else{
+                e.target.style.backgroundColor = "rgb(30, 66, 67)"; 
+            }
+            SELECTED = "e.target.id";
+        }
     }
 });
 
