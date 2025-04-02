@@ -45,10 +45,10 @@ board.addEventListener("click", (e) => {
         console.log(e.target.id);
         if(SELECTED == ""){
             if(e.target.classList.contains("white")){
-                e.target.style.backgroundColor = "rgb(165, 199, 202)"; 
+                e.target.style.backgroundColor = "rgb(0, 234, 255)"; 
             }
             else{
-                e.target.style.backgroundColor = "rgb(30, 66, 67)"; 
+                e.target.style.backgroundColor = "rgb(17, 145, 149)"; 
             }
             SELECTED = "e.target.id";
         }
