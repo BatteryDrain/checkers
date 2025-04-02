@@ -43,34 +43,23 @@ BuildBord();
 board.addEventListener("click", (e) => {
     if(e.target.id !== "board"){
         console.log(e.target.id);
-        if(SELECTED == ""){
-            if(e.target.classList.contains("white")){
-                e.target.style.backgroundColor = "rgb(0, 234, 255)"; 
+        for (i = 0; i < 65; i++) {
+            cell = document.getElementById("cell" + i);
+            if (cell && cell.classList.contains("white")) {
+                cell.style.backgroundColor = "white";
             }
-            else{
-                e.target.style.backgroundColor = "rgb(17, 145, 149)"; 
+            if (cell && cell.classList.contains("black")) {
+                cell.style.backgroundColor = "rgb(30, 67, 38)";
             }
-            SELECTED = "e.target.id";
+        }
+        SELECTED = "";
+        if(e.target.classList.contains("white")){
+            e.target.style.backgroundColor = "rgb(0, 234, 255)"; 
         }
         else{
-            for (i = 0; i < 65; i++) {
-                cell = document.getElementById("cell" + i);
-                if (cell && cell.classList.contains("white")) {
-                    cell.style.backgroundColor = "white";
-                }
-                if (cell && cell.classList.contains("black")) {
-                    cell.style.backgroundColor = "rgb(30, 67, 38)";
-                }
-            }
-            SELECTED = "";
-            if(e.target.classList.contains("white")){
-                e.target.style.backgroundColor = "rgb(0, 234, 255)"; 
-            }
-            else{
-                e.target.style.backgroundColor = "rgb(17, 145, 149)"; 
-            }
-            SELECTED = "e.target.id";
+            e.target.style.backgroundColor = "rgb(17, 145, 149)"; 
         }
+        SELECTED = "e.target.id";
     }
 });
 //bot starts here:
