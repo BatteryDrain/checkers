@@ -1,11 +1,13 @@
 #board {
     display: grid;
     background-color: grey;
-    width: 810px;
-    height: 810px;
+    max-width: 810px;
+    max-height: 810px;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-columns: repeat(auto-fit,minmax(100px, 1fr));
     padding: 5px;
+    margin: 0;
+
 }
 
 figure {
@@ -26,9 +28,24 @@ figure {
 body {
     display: flex;
     justify-content: center;
+    padding: 0;
+}
+
+main {
+    padding: 0;
 }
 
 figure img {
     width: 100px;
     height: auto;
+}
+/* 
+img {
+    display: none;
+} */
+
+@media screen and (max-width: 810px) {
+    #board {
+        width: 100%;
+    }
 }

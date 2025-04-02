@@ -1,4 +1,4 @@
-IMGS = ["assets/red coin.webp", "assets/black coin.webp", "assets/null.png"];
+IMGS = ["assets/red coin.webp", "assets/black coin.webp"];
 INDEX = 0;
 SELECTED = "";
 FIGURES = [];
@@ -18,6 +18,7 @@ function BuildBord(){
                     img.src = IMGS[1];
                 }
             }
+            img.id = "img" + INDEX;
             fig.appendChild(img);
             board.appendChild(fig);
 
@@ -41,7 +42,7 @@ function setFigures(){
 BuildBord();
 
 board.addEventListener("click", (e) => {
-    if(e.target.id !== "board"){
+    if(e.target.classList.contains("black") || e.target.classList.contains("white")){
         console.log(e.target.id);
         if(SELECTED == e.target.id){
             clear();
@@ -56,6 +57,22 @@ board.addEventListener("click", (e) => {
             }
             SELECTED = e.target.id;
         }
+    }
+    else{
+        if(e.target instanceof HTMLImageElement == true){
+            number = e.target.id.substr(3,2);
+            tileId = "cell" + number;
+            tile = document.getElementById(tileId);
+            clear();
+            console.log("tile = " + tile.classList);
+            if(tile.classList.contains("white")){
+                tile.style.backgroundColor = "rgb(0, 234, 255)"; 
+            }
+            else{
+                tile.style.backgroundColor = "rgb(17, 145, 149)"; 
+            }
+            SELECTED = tile;
+    }
     }
 });
 
