@@ -1,0 +1,34 @@
+#board {
+    display: grid;
+    background-color: grey;
+    width: 810px;
+    height: 810px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit,minmax(100px, 1fr));
+    padding: 5px;
+}
+
+figure {
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: 0;
+}
+
+.black {
+    background-color: rgb(30, 67, 38);
+}
+
+.white {
+    background-color: white;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+figure img {
+    width: 100px;
+    height: auto;
+}
