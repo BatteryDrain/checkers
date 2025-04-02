@@ -63,6 +63,13 @@ board.addEventListener("click", (e) => {
                 }
             }
             SELECTED = "";
+            if(e.target.classList.contains("white")){
+                e.target.style.backgroundColor = "rgb(0, 234, 255)"; 
+            }
+            else{
+                e.target.style.backgroundColor = "rgb(17, 145, 149)"; 
+            }
+            SELECTED = "e.target.id";
         }
     }
 });
