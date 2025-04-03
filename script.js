@@ -25,7 +25,7 @@ function BuildBord(){
             INDEX++
             COLOR = (COLOR === "white") ? "black" : "white"; //switch color
 
-            console.log (row * col + 1);
+            // console.log (row * col + 1);
             if((row * col + 1) == 50){
                 setFigures();
             }
@@ -69,7 +69,7 @@ board.addEventListener("click", (e) => {
             }
             else{
                 clear();
-                console.log("tile = " + tile.classList);
+                // console.log("tile = " + tile.classList);
                 if(tile.classList.contains("white")){
                     tile.style.backgroundColor = "rgb(0, 234, 255)"; 
                 }
