@@ -1,16 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+
 #board {
     display: grid;
     background-color: grey;
-    max-width: 810px;
-    max-height: 810px;
-    grid-template-columns: repeat(auto-fit,minmax(100px, 1fr));
+    width: 810px;
+    height: 810px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     padding: 5px;
     margin: 0;
 }
 
 figure {
-    display: block;
-    width: 100px;
     height: 100px;
     margin: 0;
 }
@@ -42,8 +44,15 @@ img {
     display: none;
 } */
 
-@media screen and (max-width: 810px) {
+@media all and (max-width: 810px) {
     #board {
-        width: 100%;
+        width: 100vw;
+        height: 100vw;
+    }
+    figure {
+        height: 12.5vw;
+    }
+    figure img {
+        width: 12.5vw;
     }
 }
