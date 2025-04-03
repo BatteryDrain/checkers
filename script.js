@@ -63,16 +63,22 @@ board.addEventListener("click", (e) => {
             number = e.target.id.substr(3,2);
             tileId = "cell" + number;
             tile = document.getElementById(tileId);
-            clear();
-            console.log("tile = " + tile.classList);
-            if(tile.classList.contains("white")){
-                tile.style.backgroundColor = "rgb(0, 234, 255)"; 
+            if(SELECTED == tile){
+                clear();
+
             }
             else{
-                tile.style.backgroundColor = "rgb(17, 145, 149)"; 
+                clear();
+                console.log("tile = " + tile.classList);
+                if(tile.classList.contains("white")){
+                    tile.style.backgroundColor = "rgb(0, 234, 255)"; 
+                }
+                else{
+                    tile.style.backgroundColor = "rgb(17, 145, 149)"; 
+                }
+                SELECTED = tile;
             }
-            SELECTED = tile;
-    }
+        }
     }
 });
 
