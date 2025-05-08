@@ -2,6 +2,16 @@ IMGS = ["assets/red coin.webp", "assets/black coin.webp"];
 INDEX = 0;
 SELECTED = "";
 FIGURES = [];
+BOARD = [
+    [,'r',,'r',,'r',,'r'],
+    ['r',,'r',,'r',,'r',],
+    [,'r',,'r',,'r',,'r'],
+    [,,,,,,,],
+    [,,,,,,,],
+    ['b',,'b',,'b',,'b',],
+    [,'b',,'b',,'b',,'b'],
+    ['b',,'b',,'b',,'b',],
+]
 function BuildBord(){
     COLOR = "white";
     for (let row = 0; row < 8; row++) {
@@ -10,14 +20,15 @@ function BuildBord(){
             fig.classList.add(COLOR); //apply css classes
             fig.id = "cell" + INDEX; //apply id
             img = document.createElement("img");
-            if ((row + col) % 2 === 1) {
-                if (row < 3) {
-                    img.src = IMGS[0];
-                } 
-                if (row > 4) {
-                    img.src = IMGS[1];
-                }
+
+            boardsquare = BOARD[row][col];
+            if (boardsquare=='r') {
+                img.src = IMGS[0];
             }
+            if (boardsquare=='b') {
+                img.src = IMGS[1];
+            }
+            
             img.id = "img" + INDEX;
             fig.appendChild(img);
             board.appendChild(fig);
@@ -43,7 +54,7 @@ BuildBord();
 
 board.addEventListener("click", (e) => {
     if(e.target.classList.contains("black") || e.target.classList.contains("white")){
-        console.log(e.target.id);
+        // console.log(e.target.id);
         if(SELECTED == e.target.id){
             clear();
         }
@@ -56,19 +67,20 @@ board.addEventListener("click", (e) => {
                 e.target.style.backgroundColor = "rgb(17, 145, 149)"; 
             }
             SELECTED = e.target.id;
+            moves(SELECTED);
         }
     }
     else{
         if(e.target instanceof HTMLImageElement == true){
             number = e.target.id.substr(3,2);
-            tileId = "cell" + number;
-            tile = document.getElementById(tileId);
-            if(SELECTED == tile){
+            // tile = document.getElementById("cell" + number);
+            if(SELECTED == number){
                 clear();
-
+                SELECTED = "";
             }
             else{
                 clear();
+                SELECTED = "";
                 // console.log("tile = " + tile.classList);
                 if(tile.classList.contains("white")){
                     tile.style.backgroundColor = "rgb(0, 234, 255)"; 
@@ -76,7 +88,8 @@ board.addEventListener("click", (e) => {
                 else{
                     tile.style.backgroundColor = "rgb(17, 145, 149)"; 
                 }
-                SELECTED = tile;
+                SELECTED = "cell" + number;
+                moves(SELECTED);
             }
         }
     }
@@ -93,4 +106,14 @@ function clear(){
         }
     }
 }
+//movement
+
+function moves(selected){
+    console.log("log: "+selected);
+    val = selected.slice(4,selected.length);//gets just the number
+    // if () {
+
+    // }
+}
+
 //bot starts here:
