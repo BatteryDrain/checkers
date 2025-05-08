@@ -33,26 +33,35 @@ body {
 
 main {
     padding: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+body {
+    margin: 0;
 }
 
 figure img {
     width: 100px;
     height: auto;
 }
-/* 
-img {
-    display: none;
-} */
 
 @media all and (max-width: 810px) {
     #board {
         width: 100vw;
         height: 100vw;
+        padding: 0;
     }
+
     figure {
         height: 12.5vw;
     }
+
     figure img {
         width: 12.5vw;
+    }
+
+    main {
+        flex-direction: column;
     }
 }
