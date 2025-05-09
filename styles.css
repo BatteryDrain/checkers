@@ -46,6 +46,12 @@ figure img {
     height: auto;
 }
 
+@media all and (max-width: 1100px) {
+    main {
+        flex-direction: column;
+    }
+}
+
 @media all and (max-width: 810px) {
     #board {
         width: 100vw;
@@ -59,9 +65,5 @@ figure img {
 
     figure img {
         width: 12.5vw;
-    }
-
-    main {
-        flex-direction: column;
     }
 }

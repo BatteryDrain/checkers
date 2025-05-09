@@ -73,8 +73,9 @@ board.addEventListener("click", (e) => {
     else{
         if(e.target instanceof HTMLImageElement == true){
             number = e.target.id.substr(3,2);
-            // tile = document.getElementById("cell" + number);
-            if(SELECTED == number){
+            tileId = number;
+            tile = document.getElementById("cell" + tileId);
+            if(SELECTED == "cell" + tileId){
                 clear();
                 SELECTED = "";
             }
@@ -88,7 +89,7 @@ board.addEventListener("click", (e) => {
                 else{
                     tile.style.backgroundColor = "rgb(17, 145, 149)"; 
                 }
-                SELECTED = "cell" + number;
+                SELECTED = "cell" + tileId;
                 moves(SELECTED);
             }
         }
@@ -110,7 +111,10 @@ function clear(){
 
 function moves(selected){
     console.log("log: "+selected);
-    val = selected.slice(4,selected.length);//gets just the number
+    val = selected.slice(4,selected.length);
+    col = val % 8;
+    row = (val - col) / 8;
+    // console.log("cell id: " + val, "row: " + row, "columb: " + col);
     // if () {
 
     // }
