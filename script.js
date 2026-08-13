@@ -55,19 +55,22 @@ BuildBord();
 board.addEventListener("click", (e) => {
     if(e.target.classList.contains("black") || e.target.classList.contains("white")){
         // console.log(e.target.id);
+        cellcolor = null;
         if(SELECTED == e.target.id){
             clear();
         }
         else{
             clear();
-            if(e.target.classList.contains("white")){
-                e.target.style.backgroundColor = "rgb(0, 234, 255)"; 
+            if(e.target.classList.contains("white")) {
+                e.target.style.backgroundColor = "rgb(0, 234, 255)";
+                cellcolor = "white";
             }
             else{
-                e.target.style.backgroundColor = "rgb(17, 145, 149)"; 
+                e.target.style.backgroundColor = "rgb(17, 145, 149)";
+                cellcolor = "black";
             }
             SELECTED = e.target.id;
-            moves(SELECTED);
+            moves(SELECTED, false, cellcolor);
         }
     }
     else{
@@ -84,13 +87,15 @@ board.addEventListener("click", (e) => {
                 SELECTED = "";
                 // console.log("tile = " + tile.classList);
                 if(tile.classList.contains("white")){
-                    tile.style.backgroundColor = "rgb(0, 234, 255)"; 
+                    tile.style.backgroundColor = "rgb(0, 234, 255)";
+                    cellcolor = "white";
                 }
                 else{
-                    tile.style.backgroundColor = "rgb(17, 145, 149)"; 
+                    tile.style.backgroundColor = "rgb(17, 145, 149)";
+                    cellcolor = "black";
                 }
                 SELECTED = "cell" + tileId;
-                moves(SELECTED);
+                moves(SELECTED, true, cellcolor);
             }
         }
     }
@@ -109,15 +114,25 @@ function clear(){
 }
 //movement
 
-function moves(selected){
+function moves(selected, img, ccolor){
     console.log("log: "+selected);
     val = selected.slice(4,selected.length);
     col = val % 8;
     row = (val - col) / 8;
     // console.log("cell id: " + val, "row: " + row, "columb: " + col);
-    // if () {
-
-    // }
+    if (img == true) {
+        if (BOARD[row][col] == "r") {
+            brval = "cell" + (parseInt(val) + 7);
+            console.log(brval);
+            console.log(brval.classList);
+            if(ccolor == "white") {
+                brval.style.backgroundColor = "rgb(0, 234, 255)";
+            }
+            else{
+                brval.style.backgroundColor = "rgb(17, 145, 149)";
+            }
+        }
+    }
 }
 
 //bot starts here:
